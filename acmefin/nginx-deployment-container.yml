@@ -1,0 +1,18 @@
+---
+name: NginxClientApp
+resourcePool: acmefin.resourcepool.kubernetespoolprod
+shortName: nginxyaml
+description: NginxClient
+status: Published
+type: Single-Pool
+application: acmefin.app.mortapp
+environment: acmecorp.environment.development
+services:
+- serviceName: nginx
+  appService: acmefin.app.mortapp.service.nginx-service
+  domainName: nginx
+  dependency: ''
+  scalingCount: 0
+  resourcePool: acmefin.resourcepool.kubernetespoolprod
+  stacks:
+    stack: acmefin.catalog.stack.nginxcontainer

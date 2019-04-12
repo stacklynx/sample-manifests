@@ -1,0 +1,79 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mongodb-pvc-claim-{{app_service_name}}
+  annotations:
+    volume.beta.kubernetes.io/storage-class: standard
+spec:
+  accessModes:
+  - ReadWriteOnce
+  storageClassName: standard
+  resources:
+    requests:
+      storage: 2Gi
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    app: stackaero-mongodb
+  name: stackaero-{{app_service_name}}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: stackaero-mongodb
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: stackaero-mongodb
+    spec:
+      containers:
+      - env:
+        - name: MONGODB_USERNAME
+          value: mongoadmin
+        - name: MONGODB_DATABASE
+          value: aerodb
+        image: bitnami/mongodb:latest
+        imagePullPolicy: Always
+        name: stackaero-mongodb
+        ports:
+        - containerPort: 27017
+          name: mongodb
+          protocol: TCP
+        resources: {}
+        volumeMounts:
+        - mountPath: /bitnami
+          name: ebs-mongodb-vol
+      initContainers:
+      - command:
+        - /bin/sh
+        - -c
+        - chown -R 1001:1001 /bitnami
+        image: busybox
+        imagePullPolicy: Always
+        name: stackaero-busybox
+        resources: {}
+        volumeMounts:
+        - mountPath: /bitnami
+          name: ebs-mongodb-vol
+      restartPolicy: Always
+      volumes:
+      - name: ebs-mongodb-vol
+        persistentVolumeClaim:
+          claimName: mongodb-pvc-claim-{{app_service_name}}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: stackaero-{{app_service_name}}
+  labels:
+    app: stackaero-mongodb
+spec:
+  ports:
+    - port: 27017    
+  selector:
+    app: stackaero-mongodb
+  type: NodePort 

@@ -1,0 +1,18 @@
+---
+name: Azure tomcat server17
+resourcePool: finance.resourcepool.fintechcorpwebwest-azure
+shortName: tomct17
+status: Published
+type: Single-Cloud
+application: finance.app.apiweb
+environment: acmecorp.environment.development
+services:
+- serviceName: tomcat-service
+  appService: finance.app.apiweb.service.stackaero-artifactory
+  domainName: tomcat-service
+  dependency: ''
+  scalingCount: 1
+  resourcePool: finance.resourcepool.fintechcorpwebwest-azure
+  stacks:
+    stack: finance.catalog.stack.javatomcatstack-azure
+    parameters: {}

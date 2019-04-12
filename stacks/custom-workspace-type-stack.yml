@@ -1,0 +1,10 @@
+---
+name: custom stack ext 1
+description: custom stack ext 1
+status: Published
+type: Custom
+custom:
+  type: ExternalRepo
+  category: WorkSpace
+  workSpace: finance.workspace.srinivasworkspace
+  path: srinivas workspace/stacks/stack.yml

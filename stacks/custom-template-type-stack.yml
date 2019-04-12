@@ -1,0 +1,11 @@
+---
+name: custom stack type 4
+description: custom stack type 4
+status: Published
+type: Custom
+custom:
+  type: Template
+  properties:
+    vpcnet_prefix: test
+    network_name: mynetwork
+  template: finance.template.amazon2tiernetworkzone

@@ -1,0 +1,10 @@
+---
+name: test app tool47
+description: test app tool45
+type: scm
+application: finance.app.forex
+applicationName: 'Forextrade '
+servicePool: finance.service.pool.meanserviceapipool
+properties:
+- name: projectCode
+  value: '41'

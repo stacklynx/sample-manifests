@@ -1,0 +1,37 @@
+application: aeroeng.app.stacklynx
+description: 'Nginx is a web server which can also be used as a reverse proxy, load
+  balancer, mail proxy and HTTP cache. The software was created by Igor Sysoev and
+  first publicly released in 2004. A company of the same name was founded in 2011
+  to provide support and Nginx plus paid software. Wikipedia
+
+  License: 2-clause BSD
+
+  Initial release: 4 October 2004; 14 years ago
+
+  Written in: C
+
+  Developer(s): Nginx, Inc
+
+  Stable release: 1.14.2 (4 December 2018; 45 days ago)
+
+  Preview release: 1.15.8 (25 December 2018; 24 days ago)'
+environment: stackaero.environment.development
+name: Aero Nginx
+resourcePool: aeroeng.resourcepool.edgelynxeaste1-testing
+services:
+- appService: aeroeng.app.stacklynx.service.nginx-service
+  dependency: ''
+  domainName: nginx-service
+  ingress:
+  - domain: corp.stacklynx.com
+    externalUrlEnv: NGINX_EXTERNAL_URL
+    service: nginx-service
+    servicePort: 80
+  resourcePool: aeroeng.resourcepool.edgelynxeaste1-testing
+  scalingCount: 0
+  serviceName: nginx-service
+  stacks:
+    stack: aeroeng.catalog.stack.aeronginxstack
+shortName: aeronginx
+status: Published
+type: Single-Pool

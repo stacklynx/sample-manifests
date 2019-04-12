@@ -1,0 +1,10 @@
+---
+name: build tool jenkin1
+description: build tool jenkin1
+type: build
+servicePool: finance.service.pool.buildpoolforjenkins
+application: finance.app.forex
+applicationName: Forextrade
+properties:
+- name: jobName
+  value: buildTest

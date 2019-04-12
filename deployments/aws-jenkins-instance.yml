@@ -1,0 +1,18 @@
+---
+name: Jenkins Redhat
+resourcePool: finance.resourcepool.fintechoregonjobspool
+shortName: jenkins36
+description: Jenkins Redhat
+status: Published
+type: Single-Pool
+application: finance.app.forex
+environment: acmecorp.environment.development
+services:
+- serviceName: redhat-jenkins
+  appService: finance.app.forex.service.forexservice
+  domainName: redhat-jenkins
+  dependency: ''
+  scalingCount: 0
+  resourcePool: finance.resourcepool.fintechoregonjobspool
+  stacks:
+    stack: finance.catalog.stack.jenkinsredhatservicestack

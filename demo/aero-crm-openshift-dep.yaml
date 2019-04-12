@@ -1,0 +1,42 @@
+application: aeroeng.app.aerocrm
+description: Aero CRM Web service
+environment: stackaero.environment.development
+name: Aero CRM On Openshift
+resourcePool: aeroeng.resourcepool.aero-crmopenshiftkubernetespool
+services:
+  - appService: aeroeng.app.aerocrm.service.app-ui
+    configuration:
+      - aeroeng.configuration.aerocrmweb
+    dependency: ''
+    domainName: aero-crm-web
+    ingress:
+      - domain: b9ad.pro-us-east-1.openshiftapps.com
+        externalUrlEnv: CRM_EXTERNAL_URL
+        service: aero-crm-web
+        servicePort: 3000
+    resourcePool: aeroeng.resourcepool.aero-crmopenshiftkubernetespool
+    scalingCount: 0
+    serviceName: aero-crm-web
+    stacks:
+      stack: aeroeng.catalog.stack.aerocrmweb
+  - appService: aeroeng.app.aerocrm.service.app-api
+    configuration:
+      - aeroeng.configuration.aerocrmapi
+    dependency: ''
+    domainName: aero-crm-api
+    ingress:
+      - domain: b9ad.pro-us-east-1.openshiftapps.com
+        externalUrlEnv: CRM_EXTERNAL_API_URL
+        service: aero-crm-api
+        servicePort: 2021
+    resourcePool: aeroeng.resourcepool.aero-crmopenshiftkubernetespool
+    scalingCount: 0
+    secrets:
+      - name: DB_PASSWORD
+        secret: aeroeng.vault.aerocrmdb_password
+    serviceName: aero-crm-api
+    stacks:
+      stack: aeroeng.catalog.stack.aerocrmapi
+# shortName: aerocrmopen
+status: Published
+type: Single-Pool

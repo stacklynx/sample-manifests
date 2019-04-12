@@ -1,0 +1,87 @@
+{
+  "type": "Single-Pool",
+  "status": "Published",
+  "name": "Loans Portal APP",
+  "resourcePool": "cspdemo.resourcepool.cspedgegkepool",
+  "shortName": "loanappv13",
+  "description": "Loans APP",
+  "application": "cspdemo.app.loansapp",
+  "environment": "cspdemo.environment.development",
+  "services": [
+    {
+      "scalingCount": 0,
+      "configuration": [
+        "cspdemo.configuration.loansappdb"
+      ],
+      "serviceName": "loans-db-svc",
+      "appService": "cspdemo.app.loansapp.service.app-db",
+      "domainName": "loans-db-svc",
+      "dependency": "",
+      "resourcePool": "cspdemo.resourcepool.cspedgegkepool",
+      "ingress": [
+        {
+          "service": "loans-db-svc",
+          "domain": "gke.stacklynx.com",
+          "externalUrlEnv": "DB_EXTERNAL_URL",
+          "servicePort": 3306
+        }
+      ],
+      "secrets": [
+        {
+          "secret": "cspdemo.vault.loansapp.development.loan-app-secrets",
+          "name": "MYSQL_PASSWORD"
+        }
+      ],
+      "stacks": {
+        "stack": "cspdemo.catalog.stack.loansportaldb"
+      }
+    },
+    {
+      "scalingCount": 0,
+      "configuration": [
+        "cspdemo.configuration.loansappapi"
+      ],
+      "serviceName": "loans-api",
+      "appService": "cspdemo.app.loansapp.service.app-api",
+      "domainName": "loans-api",
+      "dependency": "loans-db-svc",
+      "resourcePool": "cspdemo.resourcepool.cspedgegkepool",
+      "ingress": [
+        {
+          "service": "loans-api",
+          "domain": "gke.stacklynx.com",
+          "externalUrlEnv": "API_BASE_URL",
+          "servicePort": 8080
+        }
+      ],
+      "secrets": [
+        {
+          "secret": "cspdemo.vault.loansapp.development.loan-app-secrets",
+          "name": "DB_PASSWORD"
+        }
+      ],
+      "stacks": {
+        "stack": "cspdemo.catalog.stack.loansportalapi"
+      }
+    },
+    {
+      "scalingCount": 0,
+      "serviceName": "loans-ui",
+      "appService": "cspdemo.app.loansapp.service.app-ui",
+      "domainName": "loans-ui",
+      "dependency": "loans-api",
+      "resourcePool": "cspdemo.resourcepool.cspedgegkepool",
+      "ingress": [
+        {
+          "service": "loans-ui",
+          "domain": "gke.stacklynx.com",
+          "externalUrlEnv": "UI_EXTERNAL_URL",
+          "servicePort": 8080
+        }
+      ],
+      "stacks": {
+        "stack": "cspdemo.catalog.stack.loansportalweb"
+      }
+    }
+  ]
+}

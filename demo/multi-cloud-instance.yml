@@ -1,0 +1,38 @@
+---
+name: Multipool CRM  Prod Servcies
+resourcePool: aeroeng.resourcepool.aeroeng-oregonpool
+shortName: multicrm1
+description: Multipool CRM  Prod Servcies
+status: Published
+type: Multi-Pool
+application: aeroeng.app.aerocrm
+environment: stackaero.environment.development
+services:
+- serviceName: aws-cloud
+  appService: aeroeng.app.aerocrm.service.app-api
+  domainName: aws-cloud
+  dependency: ''
+  scalingCount: 0
+  resourcePool: aeroeng.resourcepool.aeroeng-oregonpool
+  stacks:
+    stack: stackaero.catalog.stack.javatomcatstack
+    instances: []
+- serviceName: azure-cloud
+  appService: aeroeng.app.aerocrm.service.portal-web
+  domainName: azure-cloud
+  dependency: ''
+  scalingCount: 0
+  resourcePool: aeroeng.resourcepool.azureinstancepool
+  stacks:
+    stack: stackaero.catalog.stack.javatomcatstack
+    instances: []
+- serviceName: google-cloud
+  appService: aeroeng.app.aerocrm.service.tomserver
+  domainName: google-cloud
+  dependency: ''
+  scalingCount: 0
+  resourcePool: aeroeng.resourcepool.edgelynxpublicgcloudpool
+  stacks:
+    stack: stackaero.catalog.stack.javatomcatstack
+    instanceFlavor: stackaero.flavor.f1-micro
+    instances: []

@@ -1,0 +1,44 @@
+---
+name: tomcat server16
+resourcePool: finance.resourcepool.awsnorthvirginiapool
+shortName: tomct16
+description: |-
+  With Spot instances, You pay the Spot price that's in effect for the time period your instances are running. Spot instance prices are set by Amazon EC2 and adjust gradually based on long-term trends in supply and demand for Spot instance capacity. The following table displays the Spot price for each region and instance type (updated every 5 minutes).
+
+  Spot instances are available at a discount of up to 90% off compared to On-Demand pricing. To compare the current Spot prices against standard On-Demand rates, visit the Spot Instance Advisor.
+
+  Spot instances are also available to run for a predefined duration – in hourly increments up to six hours in length – at a discount of up to 30-50% compared to On-Demand pricing.
+
+  To learn more about pricing, visit the AWS pricing and Amazon EC2 pricing page, or get started today.
+  Launch an Amazon EC2 Instance for Free
+  Try Amazon EC2 for Free
+  AWS Free Tier includes 750 hours of Linux and Windows t2.micro instances each month for one year. To stay within the Free Tier, use only EC2 Micro instances.
+  View AWS Free Tier Details »
+  Spot Instance Prices
+  Sorry, an error was encountered while retrieving pricing data. (Try Again)
+
+  Except as otherwise noted, our prices are exclusive of applicable taxes and duties, including VAT and applicable sales tax. For customers with a Japanese billing address, use of AWS is subject to Japanese Consumption Tax..
+status: Published
+type: Single-Pool
+application: finance.app.apiweb
+environment: acmecorp.environment.development
+services:
+- serviceName: tomcat-service
+  appService: finance.app.apiweb.service.stackaero-artifactory
+  domainName: tomcat-service
+  dependency: ''
+  scalingCount: 1
+  resourcePool: finance.resourcepool.awsnorthvirginiapool
+  stacks:
+    stack: finance.catalog.stack.javatomcatstack-centos.v1.1
+  tasks:
+    namespace: acmecorp.task.tomcatrestart
+    parameters: {}
+  loadbalancer:
+    createLoadBalancer: true
+    name: support-amazon
+    lb_rules:
+    - protocol: HTTP
+      instance_protocol: HTTP
+      loadbalancer_port: 8080
+      instance_port: 8080

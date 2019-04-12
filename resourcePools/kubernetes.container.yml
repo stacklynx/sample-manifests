@@ -1,0 +1,22 @@
+---
+resourcePoolName: Aerofinance Kubernetes
+resourcePoolDescription: Aerofinance Kubernetes
+connectionType: public
+deploymentType: public cloud
+loadbalancerType: NodePort
+usageType: public
+status: Active
+poolType: Container
+accessType: certificate
+provider: acmecorp.provider.kubernetes
+providerAccounts:
+- providerAccount: finance.provider.account.acmekube
+properties:
+  nodeSelector: ''
+  storageClass: ''
+  dockerConfigJson: ''
+type: CA
+certificates:
+- type: CA
+  certificate: finance.certificate.kubernet
+poolManager: finance.group.acmefinancebenchopsteam

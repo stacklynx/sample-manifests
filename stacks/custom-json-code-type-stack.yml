@@ -1,0 +1,11 @@
+---
+name: custom stack type json
+description: custom stack type json
+type: Custom
+status: Published
+custom:
+  type: Code
+  jsonContent:
+    custom: test
+  category: json
+  content: '{"custom":"test"}'

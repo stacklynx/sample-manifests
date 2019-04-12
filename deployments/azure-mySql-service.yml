@@ -1,0 +1,26 @@
+---
+name: Azure sql Service Rds
+resourcePool: finance.resourcepool.fintechcorpdataeast-azureservices
+shortName: azsqlr
+description: Azure sql Service Rds
+status: Published
+type: Single-Pool
+application: finance.app.forex
+environment: acmecorp.environment.development
+services:
+- serviceName: azure-mysql
+  appService: finance.app.services.mysql
+  domainName: azure-mysql
+  dependency: ''
+  scalingCount: 0
+  resourcePool: finance.resourcepool.fintechcorpdataeast-azureservices
+  stacks:
+    stack: finance.catalog.stack.azuremysqlservice
+    parameters:
+      admin_password:
+        vaultName: azure_mysql
+      group_name: azure-extrnl-rds-service
+      region: west US
+      server_name: corpdbserver
+      admin_username: azureadmin
+      db_name: azursqldb

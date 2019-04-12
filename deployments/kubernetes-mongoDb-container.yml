@@ -1,0 +1,25 @@
+---
+name: Kubernetes mongosql
+resourcePool: acmefin.resourcepool.kubernetespoolprod
+shortName: mongoksql
+description: Kubernetes Db
+status: Published
+type: Single-Pool
+application: acmefin.app.mortapp
+environment: acmecorp.environment.development
+services:
+- serviceName: aero-db
+  appService: acmefin.app.mortapp.service.dbservice
+  domainName: aero-db
+  dependency: ''
+  scalingCount: 0
+  resourcePool: acmefin.resourcepool.kubernetespoolprod
+  configuration:
+  - acmefin.configuration.mongodbgenric
+  secrets:
+  - secret: acmefin.vault.mongo_root_password
+    name: MONGO_ROOT_PASSWORD
+  - secret: acmefin.vault.mongodb_password
+    name: MONGODB_PASSWORD
+  stacks:
+    stack: acmefin.catalog.stack.stackaeromongodb.v1.1

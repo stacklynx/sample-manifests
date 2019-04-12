@@ -1,0 +1,10 @@
+---
+name: artifactory app tool
+type: binaryrepo
+description: artifactory app tool
+servicePool: finance.service.pool.artifactorypool
+application: finance.app.forex
+applicationName: Forextrade
+properties:
+- name: ArtifactoryUrl
+  value: https://git.stackaero.com/projects/stackaero-api

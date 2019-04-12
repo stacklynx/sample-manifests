@@ -1,0 +1,10 @@
+---
+name: tool stack
+description: tool stack
+status: Published
+type: Custom
+custom:
+  type: ExternalRepo
+  category: ApplicationTool
+  applicationTool: finance.application.multiclouddeployment.tool.mongodbyamltool
+  path: package.json

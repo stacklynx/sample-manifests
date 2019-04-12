@@ -1,0 +1,6 @@
+---
+name: test spool 43
+description: test spool 43
+type: build
+providerAccount: finance.provider.account.meanstackgitlab
+

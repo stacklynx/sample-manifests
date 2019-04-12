@@ -1,0 +1,20 @@
+---
+name: Amazon s3 bucket
+resourcePool: finance.resourcepool.fintechcorpeast1services
+shortName: aws3ds
+description: Amazon S3 Bucket Service creates a s3 storage in aws S3 service
+status: Published
+type: Single-Pool
+application: finance.app.forex
+environment: acmecorp.environment.development
+services:
+- serviceName: rds-bucket
+  appService: finance.app.services.s3bucket
+  domainName: rds-bucket
+  dependency: ''
+  scalingCount: 0
+  resourcePool: finance.resourcepool.fintechcorpeast1services
+  stacks:
+    stack: finance.catalog.stack.awss3bucket-sai
+    parameters:
+      bucket_name: aws-locla-rds-s3

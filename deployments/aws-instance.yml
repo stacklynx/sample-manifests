@@ -1,0 +1,22 @@
+---
+name: aws development
+resourcePool: finance.resourcepool.fintehccorpwebwest2-awsoregon
+shortName: awsdepl
+description: aws development
+status: Published
+application: finance.app.tomcatv
+environment: acmecorp.environment.development
+type: Multi-Cloud
+services:
+- dependency: ''
+  domainName: tomcat-service
+  resourcePool: finance.resourcepool.fintehccorpwebwest2-awsoregon
+  scalingCount: 0
+  serviceName: tomcat-service
+  appService: finance.app.tomcatv.service.aws_tomcat_service
+  stacks:
+    stack: finance.catalog.stack.javatomcatstack-redhatenterprise
+    parameters: {}
+  tasks:
+    namespace: acmecorp.task.showmetrics
+    parameters: {}

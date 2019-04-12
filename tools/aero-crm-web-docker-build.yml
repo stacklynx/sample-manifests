@@ -1,0 +1,12 @@
+# base image
+FROM stackaero/nodejs-base:latest
+
+RUN git clone --depth 1 https://github.com/sureshio/aero-crm-web.git /opt/apps/aero-crm-web
+RUN cd /opt/apps/aero-crm-web
+# set working directory
+WORKDIR /opt/apps/aero-crm-web
+
+RUN npm i event-stream && npm install --silent
+
+# start app
+CMD ["npm", "start"]

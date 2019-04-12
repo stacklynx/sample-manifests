@@ -1,0 +1,27 @@
+---
+name: custom stack type yaml
+description: custom stack type yaml
+status: Published
+type: Custom
+custom:
+  type: Code
+  category: yaml
+  content: |
+    ---
+    name: quick stack 1
+    description: quick stack 1
+    status: Published
+    type: Instance
+    instances:
+    - instanceId: finance.catalog.instance.centos7x86_73
+      minQuantity: 1
+      maxQuantity: 1
+      instanceName: macos
+      instanceFlavor: acmecorp.flavor.microgp
+      resourceProfile: acmecorp.resourceprofile.defaultprofile
+      packages:
+      - packageId: acmecorp.package.nodejs
+        parameters: {}
+      tasks:
+      - taskId: acmecorp.task.showmetrics
+        parameters: {}

@@ -1,0 +1,20 @@
+---
+resourcePoolName: code service pool 1
+resourcePoolDescription: code service pool 1
+connectionType: public
+deploymentType: public cloud
+loadbalancerType: NodePort
+usageType: public
+status: Active
+poolType: Service
+accessType: keypair
+provider:  acmecorp.provider.amazonwebservices
+providerAccounts:
+- providerAccount: finance.provider.account.awslionspooleast-1
+properties:
+  deleteOnTermination: 'true'
+  enableMonitoring: 'false'
+  terminationProtection: 'false'
+network: finance.networkzone.eastawsnetworkzone
+region: acmecorp.region.awsuseastn-virginia
+poolManager: finance.group.acmefinancebenchopsteam

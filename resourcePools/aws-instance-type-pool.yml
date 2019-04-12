@@ -1,0 +1,26 @@
+---
+resourcePoolName: aws code pool1
+resourcePoolDescription: this is a control point of aws ec2 instances in aws cloud
+poolType: Instance
+accessType: keypair
+status: Active
+connectionType: public
+deploymentType: public cloud
+loadbalancerType: NodePort
+usageType: public
+capacity: 0
+provider: acmecorp.provider.amazonwebservices
+providerAccounts:
+- providerAccount: finance.provider.account.awslionspooleast-1
+properties:
+  deleteOnTermination: 'true'
+  enableMonitoring: 'false'
+  terminationProtection: 'false'
+network: finance.networkzone.eastawsnetworkzone
+region: acmecorp.region.awsuseastn-virginia
+resourceProfile: acmecorp.resourceprofile.aerowebappprofile
+access:
+- keyPair: finance.keypair.finkeypair
+  username: Admin
+  type: Admin
+poolManager: finance.group.acmefinancebenchopsteam

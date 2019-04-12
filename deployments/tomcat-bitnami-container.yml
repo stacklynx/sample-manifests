@@ -1,0 +1,22 @@
+application: aeroeng.app.aerocrm
+description: Bitnami tomcat
+environment: stackaero.environment.development
+name: Bitnami Tomcat
+resourcePool: aeroeng.resourcepool.edgelynxeaste1-testing
+services:
+  - appService: aeroeng.app.aerocrm.service.portal-web
+    dependency: ''
+    domainName: tomcatserver
+    ingress:
+      - domain: cloud.stacklynx.com
+        externalUrlEnv: tomcatserver
+        service: tomcatserver
+        servicePort: 8080
+    resourcePool: aeroeng.resourcepool.edgelynxeaste1-testing
+    scalingCount: 0
+    serviceName: tomcatserver
+    stacks:
+      stack: aeroeng.catalog.stack.tomcatbitnami
+shortName: tombitnm1
+status: Running
+type: Single-Pool

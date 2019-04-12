@@ -1,0 +1,27 @@
+---
+name: Amazon Mysql l1
+resourcePool: finance.resourcepool.fintechcorpeast1services
+shortName: sqldb1
+description: Amazon Mysql l1
+status: Published
+type: Single-Pool
+application: finance.app.forex
+environment: acmecorp.environment.development
+services:
+- serviceName: mysql
+  appService: finance.app.forex.service.forexservice
+  domainName: mysql
+  dependency: ''
+  scalingCount: 0
+  resourcePool: finance.resourcepool.fintechcorpeast1services
+  stacks:
+    stack: finance.catalog.stack.amazonmysqlservicedb
+    parameters:
+      db_password:
+        vaultName: Aws_MySql_Vault
+      disk_size: '10'
+      instance_class: db.t2.small
+      instance_identifier: eastcorpdsql
+      db_username: awssqldbrds
+      instance_name: mysqldbrds
+      skip_final_snapshot: 'true'

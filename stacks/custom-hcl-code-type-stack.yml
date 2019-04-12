@@ -1,0 +1,11 @@
+---
+name: custom stack type hcl
+description: custom stack type hcl
+status: Published
+type: Custom
+custom:
+  type: Code
+  category: hcl
+  content: |-
+    test
+    test

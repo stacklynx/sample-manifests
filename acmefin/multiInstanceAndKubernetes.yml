@@ -1,0 +1,31 @@
+---
+name: Multi lender clientApp
+resourcePool: acmefin.resourcepool.acmefinoregonpool
+shortName: multilenders
+description: Multi cloud clientApps
+status: Published
+type: Multi-Pool
+application: acmefin.app.mortapp
+environment: acmecorp.environment.development
+services:
+- serviceName: porcheck
+  appService: acmefin.app.mortapp.service.portal
+  domainName: portcheck
+  dependency: ''
+  resourcePool: acmefin.resourcepool.acmefinoregonpool
+  stacks:
+    stack: acmecorp.catalog.stack.javatomcatstack
+- serviceName: apicheck
+  appService: acmefin.app.mortapp.service.apiservice
+  domainName: apicheck
+  dependency: ''
+  resourcePool: acmefin.resourcepool.acmefinazurewestpool
+  stacks:
+    stack: acmecorp.catalog.stack.javatomcatstack
+- serviceName: nginx
+  appService: acmefin.app.mortapp.service.nginx-service
+  domainName: nginx
+  dependency: ''
+  resourcePool: acmefin.resourcepool.kubernetespoolprod
+  stacks:
+    stack: acmefin.catalog.stack.nginxcontainer

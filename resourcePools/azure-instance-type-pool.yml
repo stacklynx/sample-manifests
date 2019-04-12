@@ -1,0 +1,21 @@
+---
+resourcePoolName: azure code pool 1
+resourcePoolDescription: azure code pool 1
+connectionType: public
+deploymentType: public cloud
+loadbalancerType: NodePort
+usageType: public
+status: Active
+poolType: Instance
+accessType: password
+provider: acmecorp.provider.microsoftazure
+providerAccounts:
+- providerAccount: finance.provider.account.azuresandboxwest
+properties: {}
+network: finance.networkzone.azureneteast
+region: acmecorp.region.azureuseast
+access:
+- vault: finance.vault.azure_inst_01
+  username: Admin
+  type: Admin
+poolManager: finance.group.acmefinancebenchopsteam

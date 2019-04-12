@@ -1,0 +1,42 @@
+application: aeroeng.app.aerocrm
+description: Aero CRM Web service
+environment: stackaero.environment.development
+name: Aero CRM
+resourcePool: aeroeng.resourcepool.edgelynxeaste1-testing
+services:
+  - appService: aeroeng.app.aerocrm.service.app-ui
+    configuration:
+      - aeroeng.configuration.aerocrmweb
+    dependency: ''
+    domainName: aero-crm-web
+    ingress:
+      - domain: cloud.stacklynx.com
+        externalUrlEnv: CRM_EXTERNAL_URL
+        service: aero-crm-web
+        servicePort: 3000
+    resourcePool: aeroeng.resourcepool.edgelynxeaste1-testing
+    scalingCount: 0
+    serviceName: aero-crm-web
+    stacks:
+      stack: aeroeng.catalog.stack.aerocrmweb
+  - appService: aeroeng.app.aerocrm.service.app-api
+    configuration:
+      - aeroeng.configuration.aerocrmapi
+    dependency: ''
+    domainName: aero-crm-api
+    ingress:
+      - domain: cloud.stacklynx.com
+        externalUrlEnv: CRM_EXTERNAL_API_URL
+        service: aero-crm-api
+        servicePort: 2021
+    resourcePool: aeroeng.resourcepool.edgelynxeaste1-testing
+    scalingCount: 0
+    secrets:
+      - name: DB_PASSWORD
+        secret: aeroeng.vault.aerocrmdb_password
+    serviceName: aero-crm-api
+    stacks:
+      stack: aeroeng.catalog.stack.aerocrmapi
+# shortName: aerocrm
+status: Published
+type: Single-Pool

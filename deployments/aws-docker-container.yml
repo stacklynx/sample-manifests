@@ -1,0 +1,18 @@
+---
+name: aws mongo docker container
+resourcePool: finance.resourcepool.dockerclusterpool
+shortName: swarmcd1
+description: aws mongo docker container
+status: Published
+type: Single-Pool
+application: finance.app.forex
+environment: acmecorp.environment.development
+services:
+- serviceName: swarm
+  appService: finance.app.forex.service.kubernetesforex
+  domainName: swarm
+  dependency: ''
+  scalingCount: 0
+  resourcePool: finance.resourcepool.dockerclusterpool
+  stacks:
+    stack: finance.catalog.stack.mongodockerstack

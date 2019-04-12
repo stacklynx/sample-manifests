@@ -1,0 +1,26 @@
+---
+name: Azure Postgre rds
+resourcePool: finance.resourcepool.fintechcorpdataeast-azureservices
+shortName: azurds
+description: Azure Postgre rds
+status: Draft
+type: Single-Pool
+application: finance.app.forex
+environment: acmecorp.environment.development
+services:
+- serviceName: postg-sql
+  appService: finance.app.services.postgresql
+  domainName: postg-sql
+  dependency: ''
+  scalingCount: 0
+  resourcePool: finance.resourcepool.fintechcorpdataeast-azureservices
+  stacks:
+    stack: finance.catalog.stack.azurepsotgresqlservice
+    parameters:
+      admin_password:
+        vaultName: azure_postgres_vault
+      group_name: azure-xtrnl-rsrcgrop
+      region: west US
+      server_name: azurecorpserver
+      admin_username: azureadmin
+      db_name: azurepostdb

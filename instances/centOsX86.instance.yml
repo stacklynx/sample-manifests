@@ -1,0 +1,43 @@
+---
+status: Published
+osVersion: '7'
+name: CentOS 7 x86_64
+description: CentOS 7 x86_64 Instance with latest updates
+osName: Cent OS
+logo: data:image/png;base64,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
+osFamily: LINUX
+adminuser: centos
+rootDisk: '10'
+productDescription: '<section id="product-attributes" class="attributes" style="word-wrap:
+  break-word; color: rgb(51, 51, 51); font-family: &quot;Helvetica Neue&quot;, Helvetica,
+  Arial, sans-serif;"><div class="row" id="highlights"><p class="col-xs-4" style="margin-bottom:
+  0px; width: 186.656px; font-weight: 700; text-align: right;">Highlights</p><ul class="col-xs-8"
+  style="margin-bottom: 0px; width: 373.328px; list-style: square; color: rgb(238,
+  119, 17);"><li><span style="color: rgb(0, 0, 0);">All official CentOS Linux images
+  are built with SELINUX set to enforcing mode. However, we test the images with both
+  Selinux enabled as well as permissive.</span></li><li><span style="color: rgb(0,
+  0, 0);">This image is built to allow remote ssh login only as ''root'' user with
+  the key specified at instance launch time.</span></li><li><span style="color: rgb(0,
+  0, 0);">We recommend reviewing the CentOS on AWS Cloud wiki page at http://wiki.centos.org/Cloud/AWS
+  for details on how these images are built, how you might be able to extend and add
+  functionality to these images as well as Getting Started guides.</span></li></ul></div><hr
+  style="margin-top: 1rem; margin-bottom: 1rem; border-top-width: 0.1rem; border-top-color:
+  rgb(204, 204, 204);"></section><section id="prod-description" style="word-wrap:
+  break-word; color: rgb(51, 51, 51); font-family: &quot;Helvetica Neue&quot;, Helvetica,
+  Arial, sans-serif;"><h2 id="product-description" style="font-weight: 700; font-size:
+  1.8rem;">Product Description</h2><p style="margin-bottom: 0px;">This is the Official
+  CentOS 6 x86_64 HVM image that has been built with a minimal profile. The image
+  contains just enough packages to run within AWS, bring up an SSH Server and allow
+  users to login. If you intend to run CentOS-6/x86_64 images, this one is recommended.
+  CentOS.org intends to keep these images updated based on security fixes and newer
+  point releases.</p></section><section id="product-details" style="word-wrap: break-word;
+  color: rgb(51, 51, 51); font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial,
+  sans-serif;"><h2 style="font-weight: 700; font-size: 1.8rem;">Product Details</h2><ul
+  style="margin-bottom: 0px; list-style: none;"><li><span style="font-weight: 700;">Version:</span>&nbsp;1602</li></ul></section>'
+imageCodes:
+- code: OpenLogic:CentOS:7.3:latest
+  provider: acmecorp.provider.microsoftazure
+  region: acmecorp.region.azureuseast
+- code: ami-fa2df395
+  provider: acmecorp.provider.amazonwebservices
+  region: acmecorp.region.awsuseastn-virginia

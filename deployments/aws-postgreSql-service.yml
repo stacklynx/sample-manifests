@@ -1,0 +1,26 @@
+---
+name: Aws PostgreSql rds
+resourcePool: finance.resourcepool.fintechcorpeast1services
+shortName: awssqlds
+description: Aws PostgreSql rds
+status: Published
+type: Single-Pool
+application: finance.app.forex
+environment: acmecorp.environment.development
+services:
+- serviceName: postgre-sql
+  appService: finance.app.services.mysql
+  domainName: postgre-sql
+  dependency: ''
+  scalingCount: 0
+  resourcePool: finance.resourcepool.fintechcorpeast1services
+  stacks:
+    stack: finance.catalog.stack.amazonpostgresqlservice
+    parameters:
+      db_password:
+        vaultName: Aws_postgres_vault
+      disk_size: '10'
+      instance_size: db.t2.micro
+      instance_name: rdsdbinstance
+      identifier: rdspostsqldb
+      db_username: salcoal

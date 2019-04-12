@@ -1,0 +1,30 @@
+---
+name: Azure tomcat server17
+resourcePool: finance.resourcepool.fintechcorpwebwest-azure
+shortName: tomct17
+status: Published
+type: Single-Cloud
+application: finance.app.apiweb
+environment: acmecorp.environment.development
+services:
+- serviceName: tomcat-service
+  appService: finance.app.apiweb.service.stackaero-artifactory
+  domainName: tomcat-service
+  dependency: ''
+  scalingCount: 1
+  resourcePool: finance.resourcepool.fintechcorpwebwest-azure
+  loadbalancer:
+    name: nginix_rabbimqservice
+    protocol: HTTP
+    lb_rules:
+    - name: nginix_pix_add_pool
+      protocol: TCP
+      frontend_port: 8080
+      backend_port: 8080
+    health_prob:
+      name: azure_deployment_prob
+      protocol: HTTP
+      port: 8080
+  stacks:
+    stack: finance.catalog.stack.javatomcatstack-azure
+    parameters: {}

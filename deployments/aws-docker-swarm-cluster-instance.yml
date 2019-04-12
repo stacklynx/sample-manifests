@@ -1,0 +1,21 @@
+---
+name: Docker swarm cluster dev
+resourcePool: finance.resourcepool.awseastregionpool
+shortName: devswrm
+description: Docker swarm cluster dev
+status: Published
+type: Single-Pool
+application: finance.app.forex
+environment: acmecorp.environment.development
+services:
+- serviceName: docker
+  appService: finance.app.forex.service.forexservice
+  domainName: docker
+  dependency: ''
+  scalingCount: 0
+  resourcePool: finance.resourcepool.awseastregionpool
+  stacks:
+    stack: acmecorp.catalog.stack.dockerswarmclusterstack
+  tasks:
+    namespace: acmecorp.task.swarmclusterconfiguretask
+    parameters: {}
